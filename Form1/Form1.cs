@@ -27,18 +27,34 @@ namespace Form1
         {
             // Paso 0: Condicion de vacio
             if (textBox5.Text.Equals("") ||
-                textBox6.Text.Equals(""))
+                textBox6.Text.Equals("") ||
+                textBox7.Text.Equals("") ||
+                textBox8.Text.Equals(""))
             {
                 MessageBox.Show("Los numeros tienen que ser MAYOR que cero, NO VACIOS");
                 return;
             }
             //Paso 1: Inicializacion de parametros
-            int totalValores = Convert.ToInt32(textBox5.Text);
-            int valorMuestra = Convert.ToInt32(textBox6.Text);
+            int a = Convert.ToInt32(textBox5.Text);
+            int c = Convert.ToInt32(textBox6.Text);
+            int x0 = Convert.ToInt32(textBox7.Text);
+            int m = Convert.ToInt32(textBox8.Text);
+            //Paso 1.2: Condiciones
+
+            if (a<=0 || c<=0 || x0<=0)
+            {
+                MessageBox.Show("Valores 'a', 'c', 'x0' tienen que ser mayores que cero");
+                return;
+            }
+            if (m<=x0 || m<=c || m <= a)
+            {
+                MessageBox.Show("El valor de 'm' tiene que ser mayor que los demas parametros");
+                return;
+            }
             //Paso 2: Declarar clase algoritmo genetico
             AlgoritmoSimulacion algoritmo = new AlgoritmoSimulacion();
             //Paso 3: Llamar metodo principal
-            List<int> listaEnteros = algoritmo.GenerarValores(totalValores);
+            List<int> listaEnteros = algoritmo.GeneradorCongruencial(a,c,m,x0);
             //Paso 4: Llenar el grid
             llenarGrid(listaEnteros);
         }
@@ -120,6 +136,26 @@ namespace Form1
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
         }
