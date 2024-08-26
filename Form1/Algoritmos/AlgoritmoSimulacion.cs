@@ -28,7 +28,7 @@ namespace Forms1.Algoritmos
             while (entra)
             {
                 xi = (a * xi + c) % m;
-                if (listaSalida.Contains(xi))
+                if (!listaSalida.Contains(xi))
                 {
                     listaSalida.Add((xi + 1) % m);
                 }
