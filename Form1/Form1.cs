@@ -23,6 +23,22 @@ namespace Form1
 
         }
 
+        public static bool EsPrimo(int numero)
+        {
+            if (numero <= 1) return false;
+            if (numero == 2) return true;
+            if (numero % 2 == 0) return false;
+
+            int limite = (int)Math.Floor(Math.Sqrt(numero));
+
+            for (int i = 3; i <= limite; i += 2)
+            {
+                if (numero % i == 0)
+                    return false;
+            }
+            return true;
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             // Paso 0: Condicion de vacio
@@ -49,6 +65,27 @@ namespace Form1
             if (m<=x0 || m<=c || m <= a)
             {
                 MessageBox.Show("El valor de 'm' tiene que ser mayor que los demas parametros");
+                return;
+            }
+
+            if (!EsPrimo(a))
+            {
+                MessageBox.Show("El Valor de 'a' tiene que ser un numero primo");
+                return;
+            }
+            if (!EsPrimo(c))
+            {
+                MessageBox.Show("El Valor de 'c' tiene que ser un numero primo");
+                return;
+            }
+            if (!EsPrimo(m))
+            {
+                MessageBox.Show("El Valor de 'm' tiene que ser un numero primo");
+                return;
+            }
+            if (!EsPrimo(x0))
+            {
+                MessageBox.Show("El Valor de 'x0' tiene que ser un numero primo");
                 return;
             }
             //Paso 2: Declarar clase algoritmo genetico
@@ -158,6 +195,138 @@ namespace Form1
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (textBox5.Text.Equals("") || textBox8.Text.Equals("") || textBox6.Text.Equals(""))
+            {
+                MessageBox.Show("Tiene que darle valores a la semilla 'a', a los dígitos 'm' y a la constante 'c' para este método");
+                return;
+            }
+
+            // Convertir los valores de los TextBox
+            int a = Convert.ToInt32(textBox5.Text);
+            int m = Convert.ToInt32(textBox8.Text);
+            int c = Convert.ToInt32(textBox6.Text);
+
+            // Verificar si los valores son mayores que cero
+            if (a <= 0 || m <= 0 || c <= 0)
+            {
+                MessageBox.Show("Valores 'a', 'm' y 'c' tienen que ser mayores que cero");
+                return;
+            }
+
+            // Verificar si el cuadrado de la semilla tiene suficientes dígitos
+            long cuadrado = (long)a * a;
+            string cuadradoStr = cuadrado.ToString();
+
+            if (cuadradoStr.Length < m + 2)
+            {
+                MessageBox.Show("El cuadrado de la semilla no tiene suficientes dígitos para extraer el número deseado.");
+                return;
+            }
+
+            // Llamar al método principal del AlgoritmoSimulacion
+            AlgoritmoSimulacion algoritmo = new AlgoritmoSimulacion();
+            List<int> listaEnteros = algoritmo.GeneradorProductoMedio(a, m, c);
+
+            // Llenar el grid con los resultados
+            llenarGrid(listaEnteros);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // Paso 0: Condicion de vacio
+            if (textBox5.Text.Equals("") ||
+                textBox6.Text.Equals("") ||
+                textBox7.Text.Equals("") ||
+                textBox8.Text.Equals(""))
+            {
+                MessageBox.Show("Los numeros tienen que ser MAYOR que cero, NO VACIOS");
+                return;
+            }
+            //Paso 1: Inicializacion de parametros
+            int a = Convert.ToInt32(textBox5.Text);
+            int c = Convert.ToInt32(textBox6.Text);
+            int x0 = Convert.ToInt32(textBox7.Text);
+            int m = Convert.ToInt32(textBox8.Text);
+            //Paso 1.2: Condiciones
+
+            if (a <= 0 || c <= 0 || x0 <= 0)
+            {
+                MessageBox.Show("Valores 'a', 'c', 'x0' tienen que ser mayores que cero");
+                return;
+            }
+            if (m <= x0 || m <= c || m <= a)
+            {
+                MessageBox.Show("El valor de 'm' tiene que ser mayor que los demas parametros");
+                return;
+            }
+
+            if (!EsPrimo(a))
+            {
+                MessageBox.Show("El Valor de 'a' tiene que ser un numero primo");
+                return;
+            }
+            if (!EsPrimo(c))
+            {
+                MessageBox.Show("El Valor de 'c' tiene que ser un numero primo");
+                return;
+            }
+            if (!EsPrimo(m))
+            {
+                MessageBox.Show("El Valor de 'm' tiene que ser un numero primo");
+                return;
+            }
+            if (!EsPrimo(x0))
+            {
+                MessageBox.Show("El Valor de 'x0' tiene que ser un numero primo");
+                return;
+            }
+            //Paso 2: Declarar clase algoritmo genetico
+            AlgoritmoSimulacion algoritmo = new AlgoritmoSimulacion();
+            //Paso 3: Llamar metodo principal
+            List<int> listaEnteros = algoritmo.GeneradorNoLineal(a, c, m, x0);
+            //Paso 4: Llenar el grid
+            llenarGrid(listaEnteros);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (textBox5.Text.Equals("") || textBox8.Text.Equals(""))
+            {
+                MessageBox.Show("Tiene que darle valores a la semilla 'a' y a los dígitos 'm' para este método");
+                return;
+            }
+
+            // Convertir los valores de los TextBox
+            int a = Convert.ToInt32(textBox5.Text);
+            int m = Convert.ToInt32(textBox8.Text);
+
+            // Verificar si los valores son mayores que cero
+            if (a <= 0 || m <= 0)
+            {
+                MessageBox.Show("Valores 'a' y 'm' tienen que ser mayores que cero");
+                return;
+            }
+
+            // Verificar si el cuadrado de la semilla tiene suficientes dígitos
+            long cuadrado = (long)a * a;
+            string cuadradoStr = cuadrado.ToString();
+
+            if (cuadradoStr.Length < m + 2)
+            {
+                MessageBox.Show("El cuadrado de la semilla no tiene suficientes dígitos para extraer el número deseado.");
+                return;
+            }
+
+            // Llamar al método principal del AlgoritmoSimulacion
+            AlgoritmoSimulacion algoritmo = new AlgoritmoSimulacion();
+            List<int> listaEnteros = algoritmo.GeneradorCuadradoMedio(a, m);
+
+            // Llenar el grid con los resultados
+            llenarGrid(listaEnteros);
         }
     }
 }

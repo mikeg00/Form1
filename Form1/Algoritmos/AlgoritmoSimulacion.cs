@@ -40,5 +40,121 @@ namespace Forms1.Algoritmos
             
             return listaSalida;
         }
+
+        public List<int> GeneradorNoLineal(int a, int c, int m, int X0)
+        {
+            List<int> listaSalida = new List<int>();
+            bool entra = true;
+            int xi = X0;
+            while (entra)
+            {
+                xi = (xi ^ a + c) % m;
+                if (!listaSalida.Contains(xi))
+                {
+                    listaSalida.Add((xi + 1) % m);
+                }
+                else
+                {
+                    entra = false;
+                }
+            }
+            return listaSalida;
+        }
+
+        public List<int> GeneradorCuadradoMedio(int semilla, int noDigitos)
+        {
+            List<int> listaSalida = new List<int>();
+            bool entra = true;
+            int xi = 0;
+
+            while (entra)
+            {
+                // Cuadrar la semilla
+                long cuadrado = (long)semilla * semilla;
+                string cuadradoStr = cuadrado.ToString();
+
+                // Asegurarse de que el número cuadrado tenga suficientes dígitos
+                while (cuadradoStr.Length < noDigitos + 2)
+                {
+                    cuadradoStr = "0" + cuadradoStr;
+                }
+
+                // Extraer el medio del cuadrado
+                int inicio = (cuadradoStr.Length - noDigitos) / 2;
+                string medioStr = cuadradoStr.Substring(inicio, noDigitos);
+
+                // Intentar convertir el valor medio extraído a entero
+                if (int.TryParse(medioStr, out semilla))
+                {
+                    xi = semilla;
+
+                    // Verificar si el valor ya existe en la lista
+                    if (!listaSalida.Contains(xi))
+                    {
+                        listaSalida.Add(xi);
+                    }
+                    else
+                    {
+                        entra = false; // Terminar el bucle si se repite un valor
+                    }
+                }
+                else
+                {
+                    // Terminar el bucle en caso de un error en la conversión
+                    entra = false;
+                }
+            }
+
+            return listaSalida;
+        }
+
+        public List<int> GeneradorProductoMedio(int semilla, int noDigitos, int k)
+        {
+            List<int> listaSalida = new List<int>();
+            bool entra = true;
+            int xi = 0;
+
+            while (entra)
+            {
+                // Cuadrar la semilla
+                long cuadrado = (long)semilla * k;
+                string cuadradoStr = cuadrado.ToString();
+
+                // Asegurarse de que el número cuadrado tenga suficientes dígitos
+                while (cuadradoStr.Length < noDigitos + 2)
+                {
+                    cuadradoStr = "0" + cuadradoStr;
+                }
+
+                // Extraer el medio del cuadrado
+                int inicio = (cuadradoStr.Length - noDigitos) / 2;
+                string medioStr = cuadradoStr.Substring(inicio, noDigitos);
+
+                // Intentar convertir el valor medio extraído a entero
+                if (int.TryParse(medioStr, out semilla))
+                {
+                    xi = semilla;
+
+                    // Verificar si el valor ya existe en la lista
+                    if (!listaSalida.Contains(xi))
+                    {
+                        listaSalida.Add(xi);
+                    }
+                    else
+                    {
+                        entra = false; // Terminar el bucle si se repite un valor
+                    }
+                }
+                else
+                {
+                    // Terminar el bucle en caso de un error en la conversión
+                    entra = false;
+                }
+            }
+
+            return listaSalida;
+        }
+
+
     }
 }

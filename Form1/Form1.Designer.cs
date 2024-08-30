@@ -40,6 +40,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,17 +64,17 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(487, 68);
+            this.button5.Location = new System.Drawing.Point(461, 23);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(101, 23);
             this.button5.TabIndex = 2;
-            this.button5.Text = "Ejecutar";
+            this.button5.Text = "Congruencial";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(487, 128);
+            this.button6.Location = new System.Drawing.Point(487, 195);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 51);
             this.button6.TabIndex = 3;
@@ -151,9 +154,42 @@
             this.textBox8.TabIndex = 7;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(461, 60);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(101, 23);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "No Lineal";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(461, 100);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(101, 23);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "Cuadrado Medio";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(461, 141);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(101, 23);
+            this.button9.TabIndex = 13;
+            this.button9.Text = "Producto Medio";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(606, 311);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox7);
@@ -198,6 +234,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
 
